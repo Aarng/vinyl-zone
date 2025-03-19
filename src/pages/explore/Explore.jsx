@@ -1,7 +1,7 @@
 // src/App.jsx
 
 import Navbar from "../../components/navbar/Navbar";
-import Cards from "../../components/cards/cards";
+import Cards from "../../components/cards/Cards";
 import Footer from "../../components/footer/Footer"
 import React, { useContext } from "react";
 import { CartContext } from "@/components/cartcontext/CartContext";
