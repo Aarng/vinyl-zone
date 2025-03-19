@@ -6,7 +6,7 @@ import {
 } from "react-router-dom";
 import HomePage from "./pages/home/HomePage";
 import NoPage from "./pages/noPage/NoPage";
-import Explore from "./pages/Explore/Explore";
+import Explore from "./pages/explore/Explore";
 import AddP from "./pages/addp/addp";
 import CheckOut from "./pages/checkout/CheckOut";
 import { CartProvider } from "./components/cartcontext/CartContext";
