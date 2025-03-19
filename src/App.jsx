@@ -7,7 +7,7 @@ import {
 import HomePage from "./pages/home/HomePage";
 import NoPage from "./pages/noPage/NoPage";
 import Explore from "./pages/explore/Explore";
-import AddP from "./pages/addp/addp";
+import AddP from "./pages/addp/Addp";
 import CheckOut from "./pages/checkout/CheckOut";
 import { CartProvider } from "./components/cartcontext/CartContext";
 import Overview from "./pages/poverview/Overview";
