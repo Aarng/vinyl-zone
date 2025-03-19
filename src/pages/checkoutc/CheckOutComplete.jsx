@@ -1,0 +1,22 @@
+import Navbar from "../../components/navbar/Navbar";
+import Footer from "../../components/footer/Footer";
+import React, { useContext } from "react";
+import { CartContext } from "@/components/cartcontext/CartContext";
+import Complete from "../../components/complete/Complete"
+
+
+const CheckOutComplete = () => {
+    
+const { cartItems, removeFromCart } = useContext(CartContext);
+
+
+    return (
+        <div>
+        <Navbar cartItems={cartItems} removeFromCart={removeFromCart} />
+        <Complete/>
+        <Footer />
+        </div>
+    );
+};
+
+export default CheckOutComplete;
