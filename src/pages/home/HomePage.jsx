@@ -1,4 +1,4 @@
-import Jumbotron from "../../components/Jumbotron/jumbotron";
+import Jumbotron from "../../components/Jumbotron/Jumbotron";
 import Gallery from "../../components/gallery/Gallery";
 import Navbar from "../../components/navbar/Navbar";
 import Footer from "../../components/footer/Footer";
