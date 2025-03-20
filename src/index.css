@@ -1,6 +1,9 @@
+/* Tailwind CSS Base, Components, and Utilities */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Base Variables */
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -27,8 +30,9 @@
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
-    --radius: 0.5rem
+    --radius: 0.5rem;
   }
+
   .dark {
     --background: 0 0% 3.9%;
     --foreground: 0 0% 98%;
@@ -53,53 +57,98 @@
     --chart-2: 160 60% 45%;
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%
+    --chart-5: 340 75% 55%;
   }
 }
+
+/* Global Styles */
 @layer base {
   * {
-    @apply border-border;
+    @apply border-border; /* Apply default border color */
   }
+
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground; /* Default background and text colors */
+  }
+
+  /* Responsive Container */
+  .container {
+    @apply max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8; /* Responsive padding */
+  }
+
+  /* Typography */
+  h1 {
+    @apply text-3xl sm:text-4xl lg:text-5xl font-bold; /* Responsive heading */
+  }
+  p {
+    @apply text-base sm:text-lg lg:text-xl; /* Responsive paragraph text */
+  }
+
+  /* Grid Layout */
+  .grid-responsive {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4; /* Responsive grid */
+  }
+
+  /* Cards */
+  .card {
+    @apply bg-card text-card-foreground p-6 rounded-lg shadow-md; /* Card styling */
+  }
+
+  /* Buttons */
+  .btn {
+    @apply px-4 py-2 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-colors;
+  }
+
+  /* Navbar */
+  .navbar {
+    @apply flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0;
+  }
+
+  .navbar-links {
+    @apply hidden sm:flex space-x-4; /* Hide links on small screens */
+  }
+
+  .navbar-toggle {
+    @apply block sm:hidden; /* Show hamburger icon on small screens */
   }
 }
-/* Animación de entrada */
+
+/* Animations */
 .fade-in {
   animation: fadeIn 0.5s ease-out forwards;
 }
 
-@keyframes fadeIn {
-  from {
-      opacity: 0;
-  }
-  to {
-      opacity: 1;
-  }
-}
-
-.fade-in {
-  animation: fadeIn 0.5s ease-out;
-}
-
 .fade-out {
-  animation: fadeOut 0.5s ease-out;
+  animation: fadeOut 0.5s ease-out forwards;
 }
 
 @keyframes fadeIn {
   from {
-      opacity: 0;
+    opacity: 0;
   }
   to {
-      opacity: 1;
+    opacity: 1;
   }
 }
 
 @keyframes fadeOut {
   from {
-      opacity: 1;
+    opacity: 1;
   }
   to {
-      opacity: 0;
+    opacity: 0;
+  }
+}
+
+/* Media Queries */
+@media (max-width: 640px) {
+  .responsive-text {
+    @apply text-sm; /* Smaller text on small screens */
+  }
+}
+
+@media (min-width: 1024px) {
+  .responsive-image {
+    @apply w-full lg:w-1/2; /* Larger images on bigger screens */
   }
 }
