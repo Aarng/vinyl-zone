@@ -155,7 +155,7 @@ const Navbar = ({ cartItems, removeFromCart }) => {
               Inicio
             </a>
             </Link>
-            <Link to="/" className="text-white text-lg font-medium hover:text-vermilion transition duration-300">
+            <Link to="/Explorar" className="text-white text-lg font-medium hover:text-vermilion transition duration-300">
             <a
               href="/Explorar"
               className="text-white text-lg font-medium hover:text-vermilion transition duration-300"
