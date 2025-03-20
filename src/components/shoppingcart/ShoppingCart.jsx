@@ -1,24 +1,19 @@
-// src/components/ShoppingCart.jsx
-import React, { useState, useRef,useContext } from "react";
+import React, { useState, useRef, useContext } from "react";
 import { CartContext } from "../cartcontext/CartContext";
 import { Link } from "react-router-dom";
 
 const ShoppingCart = () => {
-    const [isCartOpen, setIsCartOpen] = useState(false);
-    const cartRef = useRef(null); // Referencia al contenedor del carrito
-     const { cartItems, addToCart, removeFromCart } = useContext(CartContext);
+  const [isCartOpen, setIsCartOpen] = useState(false);
+  const cartRef = useRef(null); // Referencia al contenedor del carrito
+  const { cartItems, addToCart, removeFromCart } = useContext(CartContext);
 
-
-
-  
   const toggleCart = () => {
     if (isCartOpen) {
-      closeCart(); 
+      closeCart();
     } else {
-      openCart(); 
+      openCart();
     }
   };
-
 
   const openCart = () => {
     setIsCartOpen(true);
@@ -30,7 +25,6 @@ const ShoppingCart = () => {
     }
   };
 
-
   const closeCart = () => {
     const cartElement = cartRef.current;
     if (cartElement) {
@@ -39,14 +33,13 @@ const ShoppingCart = () => {
       setTimeout(() => {
         setIsCartOpen(false);
         cartElement.style.visibility = "hidden";
-      }, 500); 
+      }, 500); // Delay matches the transition duration
     }
   };
 
- 
-
   return (
     <div className="relative inline-block">
+      {/* Cart Button */}
       <button onClick={toggleCart} className="relative">
         <svg
           className="w-6 h-6 text-white hover:text-saffron-500"
@@ -66,12 +59,13 @@ const ShoppingCart = () => {
           />
         </svg>
         {cartItems.length > 0 && (
-          <span className="absolute top-0 right-0 left-6 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 bg-red-600 rounded-full ">
+          <span className="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 bg-red-600 rounded-full">
             {cartItems.length}
           </span>
         )}
       </button>
 
+      {/* Cart Modal */}
       <div
         ref={cartRef}
         style={{
@@ -80,19 +74,22 @@ const ShoppingCart = () => {
           visibility: "hidden",
           transition: "transform 0.5s ease-in-out, opacity 0.5s ease-in-out",
         }}
-        className="fixed top-0 right-0 w-128 h-full shadow-lg p-4 z-50 bg-light_red-800 px-10 py-10 rounded-xl"
+        className=" fixed top-0 right-0  sm:h-auto shadow-lg p-4 z-50 bg-light_red-800 rounded-xl sm:rounded-none shoppinglist"
       >
+        {/* Close Button */}
         <button
           onClick={closeCart}
-          className="text-gray-800 hover:text-gray-900 mb-4"
+          className="text-gray-800 hover:text-gray-900 mb-4 text-lg sm:text-base"
         >
           🗙
         </button>
 
-        <h2 className="text-lg font-bold mb-4">Carrito de Compras</h2>
+        {/* Cart Title */}
+        <h2 className="text-lg sm:text-xl font-bold mb-4">Carrito de Compras</h2>
 
+        {/* Empty Cart Message */}
         {cartItems.length === 0 ? (
-          <p className="text-gray-700">El carrito está vacío</p>
+          <p className="text-gray-700 dark:text-gray-300">El carrito está vacío</p>
         ) : (
           <ul>
             {cartItems.map((item) => (
@@ -100,18 +97,25 @@ const ShoppingCart = () => {
                 key={item.id}
                 className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 border-b border-gray-200 bg-gray-50 rounded-lg mb-2"
               >
+                {/* Product Image */}
                 <img
                   src={item.photos && item.photos[0]}
                   alt={item.name}
                   className="w-16 h-16 object-cover rounded mr-4 mb-2 sm:mb-0"
                 />
-                <div className="flex-1 pt-6">
-                  <p className="text-lg font-semibold text-gray-900 dark:text-white">{item.name}</p>
-                  <p className="text-lg font-semibold text-gray-900 dark:text-white">${item.price}</p>
+                {/* Product Details */}
+                <div className="flex-1">
+                  <p className="text-sm sm:text-lg font-semibold text-gray-900 dark:text-white">
+                    {item.name}
+                  </p>
+                  <p className="text-sm sm:text-lg font-semibold text-gray-900 dark:text-white">
+                    ${item.price}
+                  </p>
                 </div>
+                {/* Remove Button */}
                 <button
                   onClick={() => removeFromCart(item.id)}
-                  className="text-red-500 hover:text-red-700 mt-2 sm:mt-0"
+                  className="text-red-500 hover:text-red-700 mt-2 sm:mt-0 text-lg sm:text-base"
                 >
                   🗑
                 </button>
@@ -119,13 +123,13 @@ const ShoppingCart = () => {
             ))}
           </ul>
         )}
+
+        {/* Checkout Button */}
         {cartItems.length > 0 && (
-          <Link
-          to={'/checkout'}
-          >
-          <button className="w-full bg-saffron text-white p-2 rounded-lg hover:bg-saffron-600 mt-4">
-            Proceder al Checkout
-          </button>
+          <Link to={'/checkout'}>
+            <button className="w-full bg-saffron text-white p-2 rounded-lg hover:bg-saffron-600 mt-4 text-sm sm:text-base">
+              Proceder al Checkout
+            </button>
           </Link>
         )}
       </div>
