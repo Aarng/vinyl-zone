@@ -147,18 +147,22 @@ const Navbar = ({ cartItems, removeFromCart }) => {
 
           {/* Navigation Links */}
           <div className="flex flex-col space-y-4">
+            <Link to="/" className="text-white text-lg font-medium hover:text-vermilion transition duration-300">
             <a
               href="/"
               className="text-white text-lg font-medium hover:text-vermilion transition duration-300"
             >
               Inicio
             </a>
+            </Link>
+            <Link to="/" className="text-white text-lg font-medium hover:text-vermilion transition duration-300">
             <a
               href="/Explorar"
               className="text-white text-lg font-medium hover:text-vermilion transition duration-300"
             >
               Explorar
             </a>
+            </Link>
             <div className="flex items-center">
               <DropdownButton />
             </div>
